@@ -133,3 +133,5 @@ dmypy.json
 *requirements.txt
 micropy.json
 pymakr.conf
+.micropy/
+.vscode/
