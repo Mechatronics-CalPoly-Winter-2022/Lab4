@@ -1,4 +1,4 @@
-"""! 
+"""!
 @brief Offers functionality for driving the motor with PWM.
 """
 

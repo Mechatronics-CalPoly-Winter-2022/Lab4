@@ -1,5 +1,5 @@
-"""! 
-@brief A class that inherits from both the MotorDriver and 
+"""!
+@brief A class that inherits from both the MotorDriver and
 EncoderDriver classes. Offers full functionality from both classes.
 """
 
@@ -15,7 +15,12 @@ class Servo(MotorDriver, EncoderDriver):
     gain: float
     name: str
 
-    def __init__(self, name: str, m_config: MotorConfig, e_config: EncoderConfig) -> None:
+    def __init__(
+        self,
+        name: str,
+        m_config: MotorConfig,
+        e_config: EncoderConfig
+            ) -> None:
         '''!
         Creates a servo object by initializing the motor and encoder drivers.
         @param m_config The motor configuration
