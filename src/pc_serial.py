@@ -1,29 +1,32 @@
 import time
 import serial
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 
 def main():
-    with serial.Serial('COM5', 115201) as ser:
+    with serial.Serial('COM5', 115200) as ser:
         ser.reset_input_buffer()
         ser.reset_output_buffer()
 
-        try:
-            kp = float(input('Enter Kp: '))
-            period = float(input('Enter period: '))
-        except ValueError:
-            print('Invalid input, exiting')
-            return
-
-        ser.write((str(kp) + '\r\n').encode())
-        ser.write((str(period) + '\r\n').encode())
+        ser.write('\r\n'.encode('utf-8'))
         time.sleep(0.1)
 
-        # get rid of the value we just gave it
-        ser.readline()
-
+        x_vals, y_vals = [], []
         while True:
-            pass
+            line = ser.readline().decode().strip()
+            if line == 'end.':
+                break
+            if ',' in line:
+                x, y = line.split(',')
+                x_vals.append(float(x))
+                y_vals.append(float(y))
+
+        plt.plot(x_vals, y_vals, label='Step Response')
+        plt.ylabel('Voltage (mV)')
+        plt.ylim(bottom=0, top=3.3)
+        plt.xlabel('Time (ms)')
+        plt.margins(x=0, y=0)
+        plt.show()
 
 
 if __name__ == '__main__':
