@@ -1,3 +1,20 @@
+"""!
+@file main.py
+    Main file in which to perform the step-response and handle interrupts.
+
+@author Kyle Jennings, Zarek Lazowski, William Dorosk
+@date 2022-Feb-15
+"""
+
+##
+# @mainpage
+# @section descrition_main Lab 4
+# This lab gets the step-response of a first order system and plots it.
+#
+# @author Kyle Jennings, Zarek Lazowski, William Dorosk
+# @date February 15, 2022
+
+
 import pyb
 import utime
 from task_share import Queue
